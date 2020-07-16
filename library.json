@@ -1,0 +1,12 @@
+{
+    "name": "ESP32_L298N",
+    "keywords": "motor, driver, l298n",
+    "description": "driver to motor with l298n driver",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/Lucho-LJA/ESP32_L298N.git"
+    },
+    "frameworks": "arduino",
+    "platforms":"espressif32"
+  }
