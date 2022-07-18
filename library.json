@@ -1,7 +1,7 @@
 {
     "name": "ESP32_L298N",
     "keywords": "motor, driver, l298n",
-    "description": "driver to motor with l298n driver",
+    "description": "driver to motor with l298n driver one or two motors",
     "repository":
     {
       "type": "git",

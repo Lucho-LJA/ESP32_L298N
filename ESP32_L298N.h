@@ -8,18 +8,18 @@
     #endif
   typedef struct control_driver
   {
-    int8_t pinA;
-    int8_t pin1;
-    int8_t pin2;
-    int8_t pin3;
-    int8_t pin4;
-    int8_t pinB;
+    uint8_t pinA;
+    uint8_t pin1;
+    uint8_t pin2;
+    uint8_t pin3;
+    uint8_t pin4;
+    uint8_t pinB;
   } control_driver_t;
 
   class L298N
   {
     public:
-      L298N (uint8_t pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2,uint8_t pin3,uint8_t pin4,uint8_t pinB)
+      L298N (int pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2,uint8_t pin3,uint8_t pin4,uint8_t pinB)
       {
         analogWriteResolution(pinA,pwm_b);
         analogWriteResolution(pinB,pwm_b);
@@ -32,8 +32,17 @@
         dl298n.pin3=pin3;
         dl298n.pin4=pin4;
       }
+      L298N (uint8_t pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2)
+      {
+        analogWriteResolution(pinA,pwm_b);
+        pinMode(pin1, OUTPUT);
+        pinMode(pin2, OUTPUT);
+        dl298n.pin1=pin1;
+        dl298n.pin2=pin2;
+        dl298n.pin3=1000;
+        dl298n.pin4=1000;
+      }
 
-      #ifdef L298N_2_MOTOR
       void moveMotor(int8_t pwmA, int8_t pwmB);
       void moveMotor(int8_t pwmA);
       void backMotor(int8_t pwmA, int8_t pwmB);
@@ -43,10 +52,7 @@
       void moveMotor34(int8_t pwmA);
       void backMotor34(int8_t pwmA);
       void stopMotor();
-      #endif
 
-    
-    
     private:
 
       control_driver_t dl298n;
