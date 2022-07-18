@@ -1,39 +1,80 @@
 # About
-This library work with l298n drive. Use the libray ESP32_AnalogWrite.h (https://github.com/Lucho-LJA/ESP32_AnalogWrite.git). This version  is configured with driver to 2 motors.
-Define:
-```
-#define L298N_2_MOTOR 
-```
-to use the library.
+This library work with l298n drive compatible with ESP32. Use as reference the libray [ESP32_AnalogWrite.h](https://github.com/Lucho-LJA/ESP32_AnalogWrite.git). This version  is configured with driver to 1 or 2 motors.
 
 # Usage
-The library use a class. start with:
-```
-    L298N control_1(uint8_t pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2,uint8_t pin3,uint8_t pin4,uint8_t pinB)
-```
-## 2 MOTOR CONTROL
-    To move 2 motor with 2 control o one control of pwm use:
+The library use a class and for this example the neame of object is `control_motor`. To create the object ypu must code:
+- 2 motors:
+    ```c++
+    L298N control_motor(pwm_resolution, pin_pwm_A, pin_1, pin_2, pin_3, pin_4, pin_pwm_B)
     ```
-        moveMotor(int8_t pwmA, int8_t pwmB);
-        moveMotor(int8_t pwmA);
+- 1 motor:
+    ```c++
+    L298N control_motor(pwm_resolution, pin_pwm_A, pin_1, pin_2)
     ```
-    To move back 2 motor with 2 control o one control of pwm use:
+## MOTOR CONTROL
+### Using Two Motors
+- Move motors with diferent PWM.
+    ```c++
+    control_motor.moveMotor(pwmA,pwmB);
     ```
-        backMotor(int8_t pwmA, int8_t pwmB);
-        backMotor(int8_t pwmA);
+- Move motors with iqual PWM
+    ```c++
+    control_motor.moveMotor(pwm);
     ```
-    To move motor12 with pwm use:
+- Move back motors with diferent PWM.
+    ```c++
+    control_motor.backMotor(pwmA,pwmB);
     ```
-        moveMotor12(int8_t pwmA);
+- Move back motors with iqual PWM
+    ```c++
+    control_motor.backMotor(pwm);
     ```
-    To move back motor34 with pwm use:
+- Move motor A with pins 1-2
+    ```c++
+    control_motor.moveMotor12(pwm);
     ```
-        backMotor34(int8_t pwmA);
+- Move back motor A with pins 1-2
+    ```c++
+    control_motor.backMotor12(pwm);
     ```
-    To stop motors use:
+- Move motor B with pins 3-4
+    ```c++
+    control_motor.moveMotor34(pwm);
     ```
-        stopMotor(int8_t pwmA);
+- Move back motor B with pins 3-4
+    ```c++
+    control_motor.backMotor34(pwm);
     ```
+- Stop motors
+    ```c++
+    control_motor.stopMotor();
+    ```
+### Using Two Motors
+- Move motor
+    ```c++
+    control_motor.moveMotor(pwm);
+    ```
+    ```c++
+    control_motor.moveMotor12(pwm);
+    ```
+    ```c++
+    control_motor.moveMotor34(pwm);
+    ```
+- Move back motor
+    ```c++
+    control_motor.backMotor(pwm);
+    ```
+    ```c++
+    control_motor.backMotor12(pwm);
+    ```
+    ```c++
+    control_motor.backMotor34(pwm);
+    ```
+- Stop motor
+    ```c++
+    control_motor.stopMotor();
+    ```
+- You can use the other functions of 2 motors, but you will only control 1 motor and the the first value of pwm is choiced.
 
 
 

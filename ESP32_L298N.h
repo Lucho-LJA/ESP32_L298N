@@ -19,7 +19,7 @@
   class L298N
   {
     public:
-      L298N (int pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2,uint8_t pin3,uint8_t pin4,uint8_t pinB)
+      L298N (uint8_t pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2,uint8_t pin3,uint8_t pin4,uint8_t pinB)
       {
         analogWriteResolution(pinA,pwm_b);
         analogWriteResolution(pinB,pwm_b);
