@@ -8,18 +8,18 @@
     #endif
   typedef struct control_driver
   {
-    int pinA;
-    int pin1;
-    int pin2;
-    int pin3;
-    int pin4;
-    int pinB;
+    uint8_t pinA;
+    uint8_t pin1;
+    uint8_t pin2;
+    uint8_t pin3;
+    uint8_t pin4;
+    uint8_t pinB;
   } control_driver_t;
 
   class L298N
   {
     public:
-      L298N (int pwm_b, int pinA,int pin1,int pin2,int pin3,int pin4,int pinB)
+      L298N (int pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2,uint8_t pin3,uint8_t pin4,uint8_t pinB)
       {
         analogWriteResolution(pinA,pwm_b);
         analogWriteResolution(pinB,pwm_b);
@@ -32,15 +32,15 @@
         dl298n.pin3=pin3;
         dl298n.pin4=pin4;
       }
-      L298N (int pwm_b, int pinA,int pin1,int pin2)
+      L298N (int pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2)
       {
         analogWriteResolution(pinA,pwm_b);
         pinMode(pin1, OUTPUT);
         pinMode(pin2, OUTPUT);
         dl298n.pin1=pin1;
         dl298n.pin2=pin2;
-        dl298n.pin3=232;
-        dl298n.pin4=232;
+        dl298n.pin3=200;
+        dl298n.pin4=200;
       }
 
       void moveMotor(int pwmA, int pwmB);
@@ -59,14 +59,14 @@
 
   };
 
-  //void (uint pin);
+  //void (uuint8_t pin);
 
   //void analogWriteFrequency(double frequency);
-  //void analogWriteFrequency(uint pin, double frequency);
+  //void analogWriteFrequency(uuint8_t pin, double frequency);
 
-  //void analogWriteResolution(uint resolution);
-  //void analogWriteResolution(uint pin, uint resolution);
+  //void analogWriteResolution(uuint8_t resolution);
+  //void analogWriteResolution(uuint8_t pin, uuint8_t resolution);
 
-  //void analogWrite(uint pin, uint32_t value);
+  //void analogWrite(uuint8_t pin, uint32_t value);
 
 #endif
