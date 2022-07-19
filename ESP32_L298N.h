@@ -8,18 +8,18 @@
     #endif
   typedef struct control_driver
   {
-    uint8_t pinA;
-    uint8_t pin1;
-    uint8_t pin2;
-    uint8_t pin3;
-    uint8_t pin4;
-    uint8_t pinB;
+    int pinA;
+    int pin1;
+    int pin2;
+    int pin3;
+    int pin4;
+    int pinB;
   } control_driver_t;
 
   class L298N
   {
     public:
-      L298N (uint8_t pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2,uint8_t pin3,uint8_t pin4,uint8_t pinB)
+      L298N (int pwm_b, int pinA,int pin1,int pin2,int pin3,int pin4,int pinB)
       {
         analogWriteResolution(pinA,pwm_b);
         analogWriteResolution(pinB,pwm_b);
@@ -32,25 +32,25 @@
         dl298n.pin3=pin3;
         dl298n.pin4=pin4;
       }
-      L298N (uint8_t pwm_b, uint8_t pinA,uint8_t pin1,uint8_t pin2)
+      L298N (int pwm_b, int pinA,int pin1,int pin2)
       {
         analogWriteResolution(pinA,pwm_b);
         pinMode(pin1, OUTPUT);
         pinMode(pin2, OUTPUT);
         dl298n.pin1=pin1;
         dl298n.pin2=pin2;
-        dl298n.pin3=1000;
-        dl298n.pin4=1000;
+        dl298n.pin3=232;
+        dl298n.pin4=232;
       }
 
-      void moveMotor(int8_t pwmA, int8_t pwmB);
-      void moveMotor(int8_t pwmA);
-      void backMotor(int8_t pwmA, int8_t pwmB);
-      void backMotor(int8_t pwmA);
-      void moveMotor12(int8_t pwmA);
-      void backMotor12(int8_t pwmA);
-      void moveMotor34(int8_t pwmA);
-      void backMotor34(int8_t pwmA);
+      void moveMotor(int pwmA, int pwmB);
+      void moveMotor(int pwmA);
+      void backMotor(int pwmA, int pwmB);
+      void backMotor(int pwmA);
+      void moveMotor12(int pwmA);
+      void backMotor12(int pwmA);
+      void moveMotor34(int pwmA);
+      void backMotor34(int pwmA);
       void stopMotor();
 
     private:
@@ -59,14 +59,14 @@
 
   };
 
-  //void (uint8_t pin);
+  //void (uint pin);
 
   //void analogWriteFrequency(double frequency);
-  //void analogWriteFrequency(uint8_t pin, double frequency);
+  //void analogWriteFrequency(uint pin, double frequency);
 
-  //void analogWriteResolution(uint8_t resolution);
-  //void analogWriteResolution(uint8_t pin, uint8_t resolution);
+  //void analogWriteResolution(uint resolution);
+  //void analogWriteResolution(uint pin, uint resolution);
 
-  //void analogWrite(uint8_t pin, uint32_t value);
+  //void analogWrite(uint pin, uint32_t value);
 
 #endif
